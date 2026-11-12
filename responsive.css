@@ -1,0 +1,122 @@
+/* Mobile reading and touch layer. Approved themes and race artwork keep their colours. */
+:root{--mobile-gutter:16px;--nav-height:76px;--top-obstruction:96px;--app-width:480px;--app-left:0px}
+html{-webkit-text-size-adjust:100%;text-size-adjust:100%;scroll-padding-block:calc(var(--top-obstruction) + 12px) calc(var(--nav-height) + 16px)}
+body{padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+.app-shell{width:100%;min-height:100svh;padding-bottom:calc(var(--nav-height) + 24px)}
+body #bottom-nav{left:var(--app-left);width:var(--app-width);max-width:none;padding:7px 8px calc(7px + env(safe-area-inset-bottom));gap:4px}
+body #bottom-nav button{min-width:0;min-height:48px;font-size:12px;line-height:1.5;gap:4px}
+body #bottom-nav svg{width:22px;height:22px}
+body .labbar{padding-top:max(6px,env(safe-area-inset-top));gap:2px 8px}
+body .labbar button{min-height:44px;font-size:12px;padding:5px 8px;white-space:normal}
+body .labbar .preview-disclosure{font-size:12px;line-height:1.55}
+body .labbar>span{min-width:0}
+body .site-header{min-height:68px;height:auto;padding:10px 16px;gap:12px}
+body .site-header .icon-button{width:44px;height:44px;min-width:44px;min-height:44px}
+body .brand{min-height:44px;min-width:0;font-size:clamp(16px,4.5vw,20px)}
+body .brand small{font-size:9px;letter-spacing:.12em}
+button,a,summary,input,select{touch-action:manipulation;-webkit-tap-highlight-color:#719abf30}
+button,a,summary{scroll-margin-block:12px}
+body .app-shell button,body dialog button{min-height:44px}
+body .app-shell :is(.primary,.secondary,.cta-green,.journey-link){min-height:52px;line-height:1.65;white-space:normal;overflow-wrap:anywhere}
+body .app-shell :is(.back-link,.text-button,.preview-link){min-height:44px;padding-block:10px}
+body :is(input,select,textarea){font-size:16px;max-width:100%}
+body summary{min-height:44px;line-height:1.7;align-content:center}
+body .sticky-action{bottom:calc(var(--nav-height) + 8px);padding:10px 0;background:var(--bg)}
+body #toast{bottom:calc(var(--nav-height) + 18px);font-size:14px;line-height:1.7}
+body :is(#article-budget,#article-reasons,#article-risk,#article-recap){scroll-margin-top:12px}
+body dialog{max-height:calc(100dvh - 16px - env(safe-area-inset-top));padding:20px 16px calc(20px + env(safe-area-inset-bottom));overscroll-behavior:contain}
+body:has(dialog[open]){overflow:hidden}
+body .sheet-head .close{width:44px;height:44px;flex:none}
+body #theme-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+body .theme-tile>span{font-size:12px;line-height:1.6}
+body .theme-tile>span>b{display:block;font-size:14px;margin:0 0 3px}
+body .lab-settings{font-size:14px;gap:10px}
+
+/* Continuous type scale, with a readable floor rather than shrinking the entire UI. */
+body .oj-page :is(.analysis-lead,.analysis-section>p,.horse-role p,.decision-split p,.fact-chain p,.analysis-expand p,.evidence-file dd,.analysis-recap li,.analysis-excerpt li,.recap-prose,.recap-checks p,.recap-lead,.cast-promise>p,.journey-difference p,.journey-selection header p,.journey-next p,.first-read-benefit){font-size:16px;line-height:1.85}
+body .oj-page :is(.oj-micro,.analysis-fine,.journey-fine,.cast-disclosure,.oj-terms small,.oj-summary>small,.source-note dt,.source-note dd,.first-read-body>small){font-size:13px;line-height:1.8}
+body .oj-page :is(.oj-article-title h1,.oj-product-title h1,.journey-heading h1){font-size:clamp(26px,7.5vw,34px);line-height:1.5;overflow-wrap:anywhere}
+body .oj-page .oj-heading{font-size:clamp(20px,5.3vw,23px);line-height:1.55}
+body .oj-page .reading-guide button{font-size:13px;min-height:52px}
+body .reading-guide>div{gap:6px}
+body .oj-page .oj-summary>p{font-size:18px;line-height:1.8}
+body :is(.journey-nav,.oj-preview){grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+body :is(.journey-nav a,.journey-nav button,.oj-preview button){font-size:13px;min-height:48px;flex-wrap:wrap;column-gap:5px;row-gap:0}
+body .type-tabs b{font-size:14px}
+body .type-tabs button{min-width:0}
+body .cast-byline{gap:10px;flex-wrap:wrap}
+body .cast-byline>span:nth-child(2){min-width:0;flex:1 1 140px}
+body .cast-byline small{font-size:12px}
+body .cast-byline .oj-byline-arrow{font-size:12px}
+body .catalog-status{font-size:12px;flex-wrap:wrap;row-gap:5px}
+body .catalog-status .badge{font-size:12px}
+body .catalog-data{grid-template-columns:repeat(3,minmax(0,1fr))}
+body .catalog-data>span{font-size:12px}
+body .catalog-data b{font-size:clamp(14px,3.9vw,17px)}
+body .catalog-action{min-height:48px;font-size:16px}
+body .cast-strip{gap:8px;flex-wrap:wrap}
+body .cast-strip small,body .cast-strip em{font-size:11px}
+body .first-read-status{flex-wrap:wrap}
+body .first-read-status>span{font-size:12px}
+body .journey-included-race :is(p,small),body .journey-terms small{font-size:13px;line-height:1.75}
+body .journey-terms dt{font-size:14px}
+body .journey-plan-options small{font-size:12px}
+body .journey-plan-options a{justify-content:center;min-height:90px}
+body .condition-table caption{font-size:13px}
+body .condition-table td small{font-size:12px}
+body .condition-table tbody th{font-size:13px}
+body .comparison-key{font-size:13px}
+body .inner-page :is(.small,.notice,.conditions small,.check-list li){font-size:14px;line-height:1.8}
+body .site-footer{font-size:12px;line-height:1.8;padding-bottom:20px}
+
+@media(max-width:380px){
+  body .labbar{padding-inline:10px}
+  body .labbar button{font-size:11px;gap:3px}
+  body .labbar>span{font-size:11px}
+  body .labbar .preview-disclosure{font-size:11px}
+  body :is(.journey-nav,.oj-preview){padding-inline:8px}
+  body :is(.journey-nav a,.journey-nav button,.oj-preview button){font-size:12px;flex-direction:column;line-height:1.5}
+  body .journey-nav small,body .oj-preview small{font-size:11px}
+  body .type-tabs{gap:6px;padding-inline:10px}
+  body .type-tabs b{font-size:13px}
+  body .cast-actions,body .difference-pair,body .journey-included-race{grid-template-columns:minmax(0,1fr)}
+  body .difference-pair>div+div{border-left:0;border-top:1px solid var(--fv-rule)}
+  body .journey-included-race{gap:12px}
+  body .journey-included-race b{font-size:21px}
+  body .journey-plan-options{flex-direction:column}
+  body .journey-plan-options a{display:grid;grid-template-columns:1fr auto;min-height:66px;padding:10px 12px;text-align:left;gap:0 10px}
+  body .journey-plan-options a span{font-size:15px}
+  body .journey-plan-options a b{font-size:23px;grid-column:2;grid-row:1 / 3}
+  body .journey-plan-options a small{grid-column:1;font-size:12px}
+  body .journey-terms>div,body .oj-terms>div{display:grid;grid-template-columns:minmax(0,1fr);gap:4px}
+  body .journey-terms dd,body .oj-terms dd{text-align:left;margin:0}
+  body .evidence-file dl>div{grid-template-columns:minmax(0,1fr);gap:3px}
+  body .evidence-file dt{font-size:13px}
+  body .pace-board>div{grid-template-columns:minmax(0,1fr);padding:12px}
+  body .pace-board>div>small{font-size:13px}
+  body .pace-board .horse-role{padding:8px 0;gap:10px}
+  body .bundle-price{flex-wrap:wrap}
+  body .bundle-price>span{margin-left:0;width:100%;justify-content:center;min-height:44px}
+  body .condition-table{display:block;border:0}
+  body .condition-table caption{display:block}
+  body .condition-table thead{position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}
+  body .condition-table tbody{display:block}
+  body .condition-table tbody tr{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:12px;border:1px solid var(--fv-rule)}
+  body .condition-table tbody th{grid-column:1/-1;width:auto;text-align:left;padding:10px 12px;background:var(--oj-pale);font-size:14px;border:0;border-bottom:1px solid var(--fv-rule)}
+  body .condition-table tbody th:first-child{width:100%}
+  body .condition-table td{border:0;padding:10px 3px;font-size:24px}
+  body .condition-table td+td{border-left:1px solid var(--fv-rule)}
+  body .condition-table td:before{content:attr(data-horse);display:block;font-size:16px;line-height:1.5;margin-bottom:4px;color:var(--oj-ink)}
+  body .condition-table td small{font-size:12px;line-height:1.6}
+}
+@media(min-width:600px) and (max-width:999px){
+  .app-shell{max-width:640px}
+  body .oj-page :is(.analysis-lead,.analysis-section>p,.recap-prose){font-size:17px}
+}
+@media(max-height:500px) and (orientation:landscape){
+  body .labbar{position:relative}
+  body .sticky-action{position:static}
+  body #bottom-nav button{flex-direction:row;justify-content:center;gap:7px;min-height:44px}
+  body dialog{max-height:calc(100dvh - 8px);margin:4px auto}
+}
+@media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}}

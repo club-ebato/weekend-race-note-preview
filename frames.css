@@ -1,0 +1,57 @@
+/* Race draw colours are semantic: they must stay the same across all 8 themes. */
+/* Keep a prose identifier together where it fits; wrap safely in narrow cards. */
+body .horse-ref{display:inline-block;max-width:100%;vertical-align:baseline;white-space:normal;overflow-wrap:anywhere;font:inherit;letter-spacing:inherit;line-height:inherit;color:inherit;text-shadow:inherit;background:none;border:0;border-radius:0;padding:0;margin:0}
+body .frame-badge{display:inline-grid;place-items:center;width:36px;height:36px;flex:0 0 36px;padding:0;border:1px solid rgba(0,0,0,.24);border-radius:6px;font:900 22px/1 system-ui,sans-serif;text-shadow:none;box-shadow:0 1px 2px #0002;box-sizing:border-box}
+body .frame-1{background:#fff;color:#171717}
+body .frame-2{background:#202020;color:#fff}
+body .frame-3{background:#bf1928;color:#fff}
+body .frame-4{background:#2156af;color:#fff}
+body .frame-5{background:#f6d833;color:#171717}
+body .frame-6{background:#137749;color:#fff}
+body .frame-7{background:#f19b32;color:#171717}
+body .frame-8{background:#ed91bb;color:#171717}
+body .frame-unknown{background:#f0f1f3;color:#343a42;border:1px dashed #727982;box-shadow:none}
+body .horse-ref>.prose-number{width:1.45em;height:1.45em;min-width:20px;min-height:20px;vertical-align:-.12em;font-size:.9em;font-weight:900;line-height:1;letter-spacing:0;border-radius:4px;box-shadow:none;text-shadow:none;padding:0;margin:0}
+body .horse-id{display:inline-flex;flex-direction:column;align-items:center;gap:4px;vertical-align:middle;flex-shrink:0;font-style:normal;text-shadow:none}
+body .horse-id .horse-name{display:block;max-width:100%;font:700 13px/1.5 system-ui,sans-serif;letter-spacing:0;color:inherit;white-space:normal;overflow-wrap:anywhere;text-wrap:balance;text-align:center}
+body .horse-id .frame-caption{display:block;font:700 11px/1.25 system-ui,sans-serif;color:inherit;white-space:nowrap;letter-spacing:0}
+body .ticket .picks{align-items:center;gap:8px}
+body .ticket .picks .bet-pairs{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:center;gap:12px;font-size:16px;min-width:0}
+body .ticket .picks .bet-pair{display:inline-flex;align-items:center;gap:7px;white-space:nowrap}
+body .frame-guide{padding:12px;margin:0 0 20px;background:#f5f6f8;color:#29323f;border:1px solid #d8dde4;border-radius:8px}
+body .frame-guide p{display:flex;flex-wrap:wrap;align-items:baseline;justify-content:space-between;gap:4px;margin:0 0 10px;font-size:12px;line-height:1.5}
+body .frame-guide p b{font-size:13px;color:#202735}
+body .frame-guide p span{font-size:11px;color:#565f6b}
+body .frame-key{display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:4px}
+body .frame-key>span{display:flex;flex-direction:column;align-items:center;gap:4px}
+body .frame-key .frame-badge{width:27px;height:27px;flex-basis:27px;font-size:16px;border-radius:4px}
+body .frame-key small{font-size:11px;line-height:1.3;color:#343c48}
+body .horse-role>.horse-id{margin:2px 0;min-width:36px}
+body .condition-table thead .horse-id{margin:4px 0;font-size:12px}
+body .condition-table .table-horse-label{display:none}
+@media(max-width:380px){
+  body .condition-table td:before{content:none}
+  body .condition-table .table-horse-label{display:block;margin:0 auto 7px}
+  body .condition-table .horse-id .frame-caption{font-size:11px}
+  body .ticket .picks{flex-wrap:wrap}
+  body .ticket .picks .bet-pairs{justify-content:flex-start;gap:16px}
+}
+/* One pair per row leaves room for complete names at narrow phone widths. */
+body .ticket .picks{display:flex;flex-direction:column;align-items:stretch;gap:10px}
+body .ticket .picks .bet-pairs{display:grid;grid-template-columns:minmax(0,1fr);width:100%;gap:0;justify-content:stretch}
+body .ticket .picks .bet-pair{display:grid;grid-template-columns:minmax(0,1fr) 18px minmax(0,1fr);align-items:start;gap:8px;padding:8px 0}
+body .ticket .picks .bet-pair+.bet-pair{border-top:1px dashed var(--fv-rule,#d8dde4);margin-top:5px;padding-top:14px}
+body .ticket .picks .bet-pair>span[aria-hidden]{align-self:start;padding-top:8px;text-align:center}
+body .ticket .horse-id{min-width:0;width:100%}
+body .ticket .horse-name{font-size:14px}
+body .horse-role>.horse-id{flex:0 0 104px;width:104px;min-width:0}
+body .horse-role>div{min-width:0;flex:1}
+body .condition-table .horse-id{width:100%;min-width:0}
+body .condition-table .horse-name{font-size:12px;line-height:1.5;min-height:3em}
+body .condition-table thead th{vertical-align:top}
+@media(max-width:380px){
+  body .ticket .horse-name{font-size:13px}
+  body .horse-role>.horse-id{flex-basis:94px;width:94px}
+  body .horse-role .horse-name{font-size:13px}
+  body .condition-table .table-horse-label{padding:0 3px}
+}

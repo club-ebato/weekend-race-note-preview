@@ -1,0 +1,57 @@
+body button.horse-detail-trigger{appearance:none;cursor:pointer;color:inherit;font-family:inherit;background:transparent;border:0;padding:0;text-align:inherit;text-transform:none;letter-spacing:inherit}
+body button.horse-ref.horse-detail-trigger{font:inherit;line-height:inherit;min-height:32px;text-decoration:underline dotted;text-underline-offset:4px;text-decoration-thickness:1px}
+body button.horse-id.horse-detail-trigger{min-height:44px}
+body button.horse-id.horse-detail-trigger .horse-name{text-decoration:underline dotted;text-underline-offset:3px}
+body .horse-detail-trigger:focus-visible{outline:3px solid #1976d2;outline-offset:3px;border-radius:4px}
+body .horse-detail-trigger:active{opacity:.75}
+body .oj-page .horse-tap-guide{font-size:13px;line-height:1.7;padding:10px 12px;margin:12px 0;border:1px solid var(--fv-rule,#cfd5dd);background:var(--oj-pale,#f3f5f8);border-radius:6px;color:var(--oj-ink,#29323f)}
+body dialog.horse-detail-dialog{--detail-accent:#a8322b;--detail-pale:#fff3f0;position:fixed;inset:auto 0 0;margin:0 auto;width:min(100%,520px);max-width:100%;height:auto;max-height:min(86dvh,790px);padding:0;border:0;border-top:4px solid var(--detail-accent);border-radius:20px 20px 0 0;box-shadow:0 -12px 48px #0003;background:#fff;color:#202a36;font-family:system-ui,-apple-system,sans-serif;text-align:left;overflow:hidden;box-sizing:border-box}
+body dialog.horse-detail-dialog[open]{display:flex;flex-direction:column}
+body .horse-detail-dialog[data-persona="ren"]{--detail-accent:#8a641d;--detail-pale:#fff8e8}
+body .horse-detail-dialog[data-persona="zero"]{--detail-accent:#245786;--detail-pale:#eef6fd}
+body .horse-detail-dialog::backdrop{background:rgba(8,17,29,.56)}
+body .horse-detail-header{display:flex;align-items:flex-start;justify-content:space-between;gap:12px;padding:16px 18px 12px;background:var(--detail-pale);flex-shrink:0;border-bottom:1px solid #dce2e9}
+body .horse-detail-header>div{min-width:0}
+body .horse-detail-header p{margin:0 0 4px;font-size:12px;font-weight:700;color:var(--detail-accent);line-height:1.5}
+body .horse-detail-header h2{margin:0;font-size:22px;font-weight:800;line-height:1.5;overflow-wrap:anywhere;color:#202a36}
+body .horse-detail-dialog .horse-detail-close{display:grid;place-items:center;flex:0 0 44px;width:44px;height:44px;margin:0;padding:0;border:1px solid #cbd3dd;border-radius:50%;background:#fff;color:#273343;font-size:28px;line-height:1;cursor:pointer}
+body .horse-detail-body{padding:14px 18px 18px;overflow-y:auto;overscroll-behavior:contain;min-height:0;-webkit-overflow-scrolling:touch}
+body #horse-detail-context{font-size:12px;line-height:1.6;color:#566273;margin:0 0 12px}
+body .horse-detail-identity{display:flex;align-items:center;gap:16px;padding:12px;background:var(--detail-pale);border-radius:8px;margin-bottom:18px}
+body .horse-detail-identity .horse-id{width:116px;flex:0 0 116px;min-width:0;color:#273343}
+body .horse-detail-identity>div{min-width:0}
+body .horse-detail-identity>div>span{display:block;font-size:12px;color:#586273;margin-bottom:4px}
+body .horse-detail-identity strong{display:block;font-size:16px;line-height:1.6;overflow-wrap:anywhere;text-wrap:balance}
+body .horse-detail-body section{margin:18px 0;padding:0}
+body .horse-detail-body h3{font-size:16px;font-weight:800;line-height:1.6;margin:0 0 8px;color:var(--detail-accent);border-left:3px solid var(--detail-accent);padding-left:9px}
+body .horse-detail-body section p{font-size:16px;line-height:1.8;margin:0;color:#273343}
+body .horse-detail-body .horse-detail-risk{padding:14px;background:#f6f7f9;border:1px solid #dce2e9;border-radius:8px}
+body .horse-detail-body .horse-detail-risk h3{color:#3d4653;border-left-color:#737f90}
+body .horse-detail-body .horse-detail-note{font-size:12px;line-height:1.7;color:#626d7d;margin:14px 0 0}
+body .horse-detail-dialog footer{padding:12px 18px max(14px,env(safe-area-inset-bottom));border-top:1px solid #dce2e9;background:#fff;flex-shrink:0}
+body .horse-detail-dialog footer button{display:block;width:100%;min-height:48px;padding:12px 8px;border:0;border-radius:8px;font:700 15px/1.5 system-ui,sans-serif;background:var(--detail-accent);color:#fff;cursor:pointer}
+body .horse-detail-dialog button:focus-visible{outline:3px solid #1976d2;outline-offset:2px}
+@media(min-width:700px){body dialog.horse-detail-dialog{inset:0;margin:auto;max-height:min(86dvh,790px);border-radius:18px}}
+/* Switching stays available while the reasons scroll; the sheet never closes. */
+body dialog.horse-detail-dialog{height:min(86dvh,790px)}
+body .horse-detail-body{flex:1 1 auto}
+body .horse-switcher{flex-shrink:0;padding:10px 16px 12px;background:#fff;border-bottom:1px solid #dce2e9}
+body .horse-switcher #horse-detail-context{margin:0 0 8px;font-size:12px}
+body .horse-switch-caption{display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:8px;color:#465365;font-size:12px;font-weight:700;line-height:1.5}
+body .horse-switch-caption small{font-size:11px;color:var(--detail-accent)}
+body .horse-switch-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+body .horse-switch-list .horse-switch-choice{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;min-width:0;min-height:84px;padding:8px 4px;border:1px solid #cbd3dd;border-radius:8px;background:#fff;color:#273343;font-family:inherit;cursor:pointer;text-align:center}
+body .horse-switch-list .horse-switch-choice[aria-pressed="true"]{border:2px solid var(--detail-accent);padding:7px 3px;background:var(--detail-pale);box-shadow:0 0 0 1px var(--detail-accent)}
+body .horse-switch-choice .frame-badge{width:28px;height:28px;flex:0 0 28px;font-size:18px;border-radius:4px}
+body .horse-switch-name{display:block;font-size:12px;font-weight:700;line-height:1.5;overflow-wrap:anywhere;text-wrap:balance;max-width:100%;min-height:3em}
+body .horse-switch-check{position:absolute;right:5px;top:3px;font-size:13px;font-weight:900;color:var(--detail-accent);visibility:hidden}
+body .horse-switch-choice[aria-pressed="true"] .horse-switch-check{visibility:visible}
+body .horse-switch-list .horse-switch-excluded{grid-column:1/-1;flex-direction:row;gap:10px;min-height:44px;padding:7px 12px}
+body .horse-switch-list .horse-switch-excluded[aria-pressed="true"]{padding:6px 11px}
+body .horse-switch-excluded .horse-switch-name{min-height:0}
+body .horse-switch-excluded small{font-size:11px;color:#586273}
+body .horse-switch-excluded .horse-switch-check{position:static}
+body .horse-detail-role{padding:10px 12px;border-radius:6px;background:var(--detail-pale);display:flex;align-items:baseline;gap:12px;flex-wrap:wrap}
+body .horse-detail-role>span{font-size:12px;line-height:1.5;color:#586273}
+body .horse-detail-role strong{font-size:16px;line-height:1.6;color:#273343;overflow-wrap:anywhere}
+body .horse-switch-sr{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip-path:inset(50%);white-space:nowrap;border:0}

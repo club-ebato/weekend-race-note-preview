@@ -1,0 +1,9 @@
+/* The active site theme owns artwork framing, including within persona panels. */
+body[data-theme="11"] .holo-eyecatch{--holo:#ffb43d;--holo-second:#ff6b2c;--holo-glow:rgba(255,137,36,.28);background:radial-gradient(ellipse at 50% 90%,#97371866,transparent 65%),#261108}
+body[data-theme="04"] .holo-eyecatch{--holo:#94d75c;--holo-second:#ffe471;--holo-glow:rgba(87,174,87,.28);background:radial-gradient(ellipse at 50% 90%,#28724666,transparent 65%),#081d12}
+body[data-theme="06"] .holo-eyecatch{--holo:#e4baff;--holo-second:#ff8fdb;--holo-glow:rgba(196,126,243,.3);background:radial-gradient(ellipse at 50% 90%,#67469e88,transparent 65%),#21152f}
+body[data-theme="07"] .holo-eyecatch{--holo:#6ff1ff;--holo-second:#ed83ff;--holo-glow:rgba(112,210,255,.27);background:radial-gradient(ellipse at 50% 90%,#29618566,transparent 65%),#091322}
+body[data-theme="08"] .holo-eyecatch{--holo:#ffe867;--holo-second:#ff5245;--holo-glow:rgba(255,96,53,.27);background:radial-gradient(ellipse at 50% 90%,#8c291c88,transparent 65%),#25100e}
+body[data-theme="10"] .holo-eyecatch{--holo:#ffcf64;--holo-second:#ff5941;--holo-glow:rgba(255,170,56,.3);background:radial-gradient(ellipse at 50% 90%,#88251599,transparent 65%),#270b09}
+body[data-theme="12"] .holo-eyecatch{--holo:#e4f0ef;--holo-second:#a6da64;--holo-glow:rgba(175,217,178,.3);background:radial-gradient(ellipse at 50% 90%,#46735488,transparent 65%),#102019}
+body[data-theme="13"] .holo-eyecatch{--holo:#ffd769;--holo-second:#ee493b;--holo-glow:rgba(236,131,63,.27);background:radial-gradient(ellipse at 50% 90%,#87472c88,transparent 65%),#20130f}

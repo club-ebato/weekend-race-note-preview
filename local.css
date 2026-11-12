@@ -1,0 +1,16 @@
+.market-tabs{display:grid;grid-template-columns:1fr 1fr;background:#fff;padding:8px 16px;gap:8px;border-bottom:1px solid #ddd}
+.market-tabs button{min-height:54px;border:1px solid #bbc0c5;border-radius:6px;background:#f7f8fa;color:#303840;display:grid;gap:2px;place-content:center;text-align:center}
+.market-tabs button[aria-pressed=true]{background:#28313c;border-color:var(--accent,#aa1726);color:#fff;box-shadow:inset 0 -3px 0 #0003}
+.market-tabs b{font-size:17px;font-weight:900}.market-tabs small{font-size:11px}
+.local-home .page-masthead h1{font-size:34px;line-height:1.25}.local-home .page-masthead{padding-bottom:20px}
+.local-intro-art{overflow:hidden;border-radius:6px}.local-intro-art img{display:block;width:100%;height:auto;aspect-ratio:16/9;object-fit:cover}
+.local-summary{display:grid;grid-template-columns:repeat(3,1fr);margin-top:16px;border-block:1px solid #ddd;background:white}
+.local-summary>span{text-align:center;padding:12px 4px;color:#303840;font-size:12px}.local-summary>span+span{border-left:1px solid #ddd}.local-summary b{display:block;font-size:20px;margin-top:4px;color:#111}
+.local-home .notice{margin:20px 0}.local-home .notice p{margin:6px 0 0}.local-home>.secondary{margin-top:12px}
+.local-day-offer{padding:24px 18px;margin:12px 0;background:#fff;border:2px solid var(--accent,#aa1726);border-radius:8px;color:#18212a}
+.local-day-offer>span{font-weight:800;display:block}.local-day-offer>strong{display:block;font-size:44px;line-height:1.3;margin:8px 0}.local-day-offer strong small{font-size:14px;margin-left:4px}.local-day-offer p{font-size:14px;line-height:1.7}
+.scope-label{display:block;font-weight:700;margin:16px 0 8px}#notification-scope{width:100%;min-height:48px;background:#fff;color:#17212b;border:1px solid #888;padding:10px 12px;border-radius:6px;font:inherit}
+.catalog-data{flex-wrap:wrap}.catalog-data b{white-space:normal}.product-price strong,.order-total strong{overflow-wrap:anywhere}.product-page .product-price{margin-top:12px}
+@media(max-width:350px){.local-home .page-masthead h1{font-size:30px}.market-tabs{padding-inline:12px}.local-summary b{font-size:18px}.catalog-data{font-size:11px}}
+
+.market-tabs button small{color:inherit;opacity:.85}
