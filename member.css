@@ -201,3 +201,21 @@ body[data-content="managed"] .lab-settings{display:none}
 
 /* 公開用の表示：試作用の帯とデザイン切り替えを出さない */
 body[data-chrome="live"] .labbar,body[data-chrome="live"] #desktop-theme,body[data-chrome="live"] #desktop-theme-options{display:none}
+
+/* 規約・プライバシーポリシー・特定商取引法の表記（下書き） */
+.lg-draft{margin:0 0 18px;padding:12px 14px;border:2px solid #b3261e;border-radius:6px;background:#fff5f3;color:#3a1512}
+.lg-draft b{display:block;font-size:15px;font-weight:900}
+.lg-draft p{margin:4px 0 0;font-size:13px;line-height:1.8}
+.lg-list{margin:10px 0 20px;padding:0 0 0 1.2em;font-size:14px;line-height:1.9}
+.lg-list li{margin:0 0 6px}
+.lg-table{margin:0 0 20px;border-top:1px solid #cfc9bc}
+.lg-table>div{display:grid;grid-template-columns:8.5em 1fr;gap:10px;padding:11px 2px;border-bottom:1px solid #cfc9bc}
+.lg-table dt{font-size:13px;font-weight:900;line-height:1.7}
+.lg-table dd{margin:0;font-size:14px;line-height:1.8}
+.lg-date{margin:0 0 14px;font-size:12px;color:#626262}
+.lg-links{display:flex;flex-wrap:wrap;gap:6px 14px;margin:12px 0 18px}
+.lg-links button{padding:6px 0;min-height:44px;border:0;background:none;color:inherit;font-size:13px;font-weight:800;text-decoration:underline;text-underline-offset:3px}
+.site-footer .lg-links{justify-content:center;gap:0 14px;margin:8px 0 0}
+.site-footer .lg-links button{font-size:12px;font-weight:600}
+.lg-company p{margin:0;font-size:14px;line-height:1.8}
+@media(max-width:360px){.lg-table>div{grid-template-columns:1fr;gap:2px}}
