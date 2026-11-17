@@ -53,30 +53,30 @@
 [data-persona="ojisan"] .mg-eye-course{color:#fff}
 [data-persona="ren"] .mg-eyecatch{--mg-a:#0b0a08;--mg-b:#1a160e;--mg-ink:#f3d789;--mg-sub:#e2b955;--mg-sub-ink:#17130c;--mg-line:#e2b955}
 [data-persona="zero"] .mg-eyecatch{--mg-a:#0a2550;--mg-b:#123a73;--mg-ink:#f2f7fd;--mg-sub:#dbe4ef;--mg-sub-ink:#0d2c5c;--mg-line:#c9d5e3}
-body[data-theme="04"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/04-race.jpg")}
-body[data-theme="04"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/04-paddock.jpg")}
-body[data-theme="04"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/04-desk.jpg")}
-body[data-theme="06"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/06-race.jpg")}
-body[data-theme="06"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/06-paddock.jpg")}
-body[data-theme="06"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/06-desk.jpg")}
-body[data-theme="07"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/07-race.jpg")}
-body[data-theme="07"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/07-paddock.jpg")}
-body[data-theme="07"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/07-desk.jpg")}
-body[data-theme="08"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/08-race.jpg")}
-body[data-theme="08"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/08-paddock.jpg")}
-body[data-theme="08"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/08-desk.jpg")}
-body[data-theme="10"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/10-race.jpg")}
-body[data-theme="10"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/10-paddock.jpg")}
-body[data-theme="10"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/10-desk.jpg")}
-body[data-theme="11"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/11-race.jpg")}
-body[data-theme="11"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/11-paddock.jpg")}
-body[data-theme="11"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/11-desk.jpg")}
-body[data-theme="12"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/12-race.jpg")}
-body[data-theme="12"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/12-paddock.jpg")}
-body[data-theme="12"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/12-desk.jpg")}
-body[data-theme="13"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/13-race.jpg")}
-body[data-theme="13"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/13-paddock.jpg")}
-body[data-theme="13"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/13-desk.jpg")}
+body[data-theme="04"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/opt/04-race.jpg")}
+body[data-theme="04"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/opt/04-paddock.jpg")}
+body[data-theme="04"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/opt/04-desk.jpg")}
+body[data-theme="06"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/opt/06-race.jpg")}
+body[data-theme="06"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/opt/06-paddock.jpg")}
+body[data-theme="06"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/opt/06-desk.jpg")}
+body[data-theme="07"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/opt/07-race.jpg")}
+body[data-theme="07"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/opt/07-paddock.jpg")}
+body[data-theme="07"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/opt/07-desk.jpg")}
+body[data-theme="08"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/opt/08-race.jpg")}
+body[data-theme="08"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/opt/08-paddock.jpg")}
+body[data-theme="08"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/opt/08-desk.jpg")}
+body[data-theme="10"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/opt/10-race.jpg")}
+body[data-theme="10"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/opt/10-paddock.jpg")}
+body[data-theme="10"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/opt/10-desk.jpg")}
+body[data-theme="11"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/opt/11-race.jpg")}
+body[data-theme="11"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/opt/11-paddock.jpg")}
+body[data-theme="11"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/opt/11-desk.jpg")}
+body[data-theme="12"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/opt/12-race.jpg")}
+body[data-theme="12"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/opt/12-paddock.jpg")}
+body[data-theme="12"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/opt/12-desk.jpg")}
+body[data-theme="13"] [data-persona="ojisan"] .mg-eyecatch{--mg-photo:url("assets/opt/13-race.jpg")}
+body[data-theme="13"] [data-persona="ren"] .mg-eyecatch{--mg-photo:url("assets/opt/13-paddock.jpg")}
+body[data-theme="13"] [data-persona="zero"] .mg-eyecatch{--mg-photo:url("assets/opt/13-desk.jpg")}
 .mg-art .holo-media-frame{aspect-ratio:3/2}
 .catalog-card .mg-art{display:block;width:100%}
 .mg-article .oj-article-title h1{font-size:24px;line-height:1.4;font-weight:900;margin:6px 0 10px}
@@ -198,3 +198,6 @@ body[data-content="managed"] .lab-settings{display:none}
 .mh-provider b{display:block;font-size:18px;font-weight:900;line-height:1.5}
 .mh-provider p{margin:6px 0 0;font-size:12px;line-height:1.8}
 .ad-section>h3{margin:16px 0 0;font-size:15px;font-weight:900}
+
+/* 公開用の表示：試作用の帯とデザイン切り替えを出さない */
+body[data-chrome="live"] .labbar,body[data-chrome="live"] #desktop-theme,body[data-chrome="live"] #desktop-theme-options{display:none}

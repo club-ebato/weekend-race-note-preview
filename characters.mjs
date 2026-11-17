@@ -8,7 +8,8 @@ export const raceCharacters = {'sat-free':'ojisan','sat-a':'ren','sat-b':'zero',
 export const characterFor = r => characters[raceCharacters[r?.id] || 'ojisan'];
 export const typeByKey = id => Object.values(characters).find(p=>p.key===id||p.id===id)||characters.ojisan;
 export const characterPath = p => 'type/'+p.key;
-export const characterHero = p => `assets/types/${p.key}.png`;
+// 表示用は軽くした画像（assets/opt）。元の画像は assets/types に残している。
+export const characterHero = p => `assets/opt/type-${p.key}.jpg`;
 export const portrait = p => `<span class="type-mark" data-persona="${p.id}" aria-hidden="true">${p.mark}</span>`;
 export const characterDisclosure = '<p class="cast-disclosure"><b>３つの切り口。予想は、提携する予想家が提供。</b>分類は予想・分析の方針です。的中率や高配当を保証するものではありません。データ分析はAI予想機能ではありません。</p>';
 const contextLabel=p=>p.id==='zero'?'地方・提供日B（仮）':p.id==='ren'?'中央・日曜':'中央・土曜';
