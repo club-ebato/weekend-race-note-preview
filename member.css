@@ -219,3 +219,21 @@ body[data-chrome="live"] .labbar,body[data-chrome="live"] #desktop-theme,body[da
 .site-footer .lg-links button{font-size:12px;font-weight:600}
 .lg-company p{margin:0;font-size:14px;line-height:1.8}
 @media(max-width:360px){.lg-table>div{grid-template-columns:1fr;gap:2px}}
+
+/* 料金と商品（3段階の案） */
+.pl-card{margin:0 0 16px;padding:14px 16px 16px;border:2px solid #29211d;border-radius:8px;background:#fff}
+.pl-card[data-tier="premium"]{background:#fffdf6;border-color:#8a6a1c}
+.pl-card header{display:flex;align-items:center;justify-content:space-between;gap:8px}
+.pl-label{padding:2px 12px;background:#29211d;color:#fff;font-size:13px;font-weight:900;letter-spacing:.08em}
+.pl-card[data-tier="premium"] .pl-label{background:#8a6a1c}
+.pl-status{padding:2px 9px;border:1px solid #9a948a;border-radius:999px;font-size:11px;font-weight:800;color:#555}
+.pl-status.on{border-color:#1d6b3a;color:#1d6b3a}
+.pl-price{margin:10px 0 0;line-height:1.5}
+.pl-price b{display:block;font-size:26px;font-weight:900;letter-spacing:-.02em}
+.pl-price small{display:block;font-size:13px;font-weight:700}
+.pl-price em{display:block;margin-top:2px;font-size:12px;font-style:normal;color:#626262}
+.pl-points{margin:12px 0 0;padding:0 0 0 1.2em;font-size:14px;line-height:1.8}
+.pl-schedule{margin:12px 0 0;padding-top:10px;border-top:1px solid #cfc9bc;font-size:13px;line-height:1.7}
+.pl-schedule span{display:block;font-size:11px;font-weight:900;color:#626262}
+.pl-card .button,.pl-card button{margin-top:12px}
+@media(max-width:360px){.pl-price b{font-size:22px}}
