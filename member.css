@@ -237,3 +237,6 @@ body[data-chrome="live"] .labbar,body[data-chrome="live"] #desktop-theme,body[da
 .pl-schedule span{display:block;font-size:11px;font-weight:900;color:#626262}
 .pl-card .button,.pl-card button{margin-top:12px}
 @media(max-width:360px){.pl-price b{font-size:22px}}
+
+/* 上位版の情報料（幅のある案なので、数字を小さめに） */
+.oj-price strong.mg-premium-price{font-size:22px;letter-spacing:-.02em;white-space:nowrap}

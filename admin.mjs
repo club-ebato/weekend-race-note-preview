@@ -85,7 +85,7 @@ async function list(box, c) {
         const tally = m => { const x = items.filter(a => a.draft.race_date === day && a.draft.market === m); return x.length ? `${m === 'local' ? '地方' : '中央'} 無料${x.filter(a => a.draft.access === 'free').length}・有料${x.filter(a => a.draft.access === 'paid').length}` : ''; };
         return `<section class="ad-day"><h2>${day ? dateLabel(day) : 'レース日未設定'}<small>${[tally('central'), tally('local')].filter(Boolean).join(' ／ ')}</small></h2>${rows.map(a => {
           const d = a.draft, t = types[d.type];
-          return `<article class="ad-card"><div class="ad-card-status">${statusBadges(a)}${a.result ? `<span class="ad-status ad-status-sub">結果：${({hit: '的中', miss: '不的中', pending: '確認中', cancel: '未提供'})[a.result]}</span>` : ''}</div><h3>${esc(d.title) || '（タイトル未入力）'}</h3><p>${d.market === 'local' ? '地方' : d.market === 'central' ? '中央' : '区分未設定'} ・ ${esc(raceLabel(d))} ・ ${esc(courseLabel(d))} ・ ${d.access === 'paid' ? '有料' : d.access === 'free' ? '無料' : '区分未設定'} ・ ${t ? t.name : 'タイプ未設定'}</p>${a.error_count ? `<p class="ad-warn">未入力・不整合 ${a.error_count}件（公開前に解消が必要）</p>` : ''}<small>最終保存 ${timeLabel(a.updated_at)} ${esc(a.updated_by || '')}</small><div class="ad-card-actions"><button class="secondary" data-go="admin/edit/${a.id}">編集</button><button class="secondary" data-go="admin/article/${a.id}">プレビュー・公開</button></div></article>`;
+          return `<article class="ad-card"><div class="ad-card-status">${statusBadges(a)}${a.result ? `<span class="ad-status ad-status-sub">結果：${({hit: '的中', miss: '不的中', pending: '確認中', cancel: '未提供'})[a.result]}</span>` : ''}</div><h3>${esc(d.title) || '（タイトル未入力）'}</h3><p>${d.market === 'local' ? '地方' : d.market === 'central' ? '中央' : '区分未設定'} ・ ${esc(raceLabel(d))} ・ ${esc(courseLabel(d))} ・ ${d.access === 'paid' ? (d.tier === 'premium' ? '有料・上位' : '有料') : d.access === 'free' ? '無料' : '区分未設定'} ・ ${t ? t.name : 'タイプ未設定'}</p>${a.error_count ? `<p class="ad-warn">未入力・不整合 ${a.error_count}件（公開前に解消が必要）</p>` : ''}<small>最終保存 ${timeLabel(a.updated_at)} ${esc(a.updated_by || '')}</small><div class="ad-card-actions"><button class="secondary" data-go="admin/edit/${a.id}">編集</button><button class="secondary" data-go="admin/article/${a.id}">プレビュー・公開</button></div></article>`;
         }).join('')}</section>`;
       }).join('') : '<div class="empty"><b>該当する記事はありません</b></div>'}
       <p class="small">初期仕様の目安：中央は土日それぞれ無料1・有料2、地方は提供日ごとに無料1・有料2。</p>`, c);
@@ -120,6 +120,7 @@ function formHtml(d) {
     </fieldset>
     <fieldset><legend>2. 記事の区分</legend>
       <div class="ad-grid">${field('type', '予想タイプ', select('type', d.type, Object.entries(types).map(([k, t]) => [k, t.name])))}${field('access', '無料／有料', select('access', d.access, [['free', '無料'], ['paid', '有料']]))}</div>
+      ${field('tier', '通常／上位', select('tier', d.tier || 'standard', [['standard', '通常'], ['premium', '上位']]), {cls: 'ad-paid', hint: '上位＝週末のメインレースや南関東の厳選レース向けの詳細版です。値段が未確定のため、公開しても読者はまだ購入できません。'})}
       <p class="small">無料＝登録していない人も全文を読めます。有料＝購入した会員だけが本文を読めます。</p>
       <p class="small">同じ予想を、タイプを変えて重複して販売しないでください。</p>
     </fieldset>
@@ -170,7 +171,7 @@ function collect(form) {
   return {
     market: v('market'), race_date: v('race_date'), venue: v('venue'), race_number: num('race_number'), race_name: v('race_name'),
     surface: v('surface'), distance_m: num('distance_m'), post_time: v('post_time'), type: v('type'), access,
-    title: v('title'), summary: v('summary'), publish_at: v('publish_at'), sales_close_at: access === 'paid' ? v('sales_close_at') : '',
+    title: v('title'), summary: v('summary'), publish_at: v('publish_at'), sales_close_at: access === 'paid' ? v('sales_close_at') : '', ...(access === 'paid' ? {tier: v('tier') === 'premium' ? 'premium' : 'standard'} : {}),
     ticket_type: v('ticket_type'), unit_amount: num('unit_amount'), viewpoints: v('viewpoints'), conclusion: v('conclusion'),
     bets: v('bets').split(/[\n,、]+/).map(line => line.trim()).filter(Boolean).map(line => line.split(/[-－ー―→>\s]+/).filter(Boolean).map(x => /^\d+$/.test(x) ? Number(x) : 0)),
     reasons: [...form.querySelectorAll('[data-reason]')].map(x => x.value.trim()).filter(Boolean), concern: v('concern'),

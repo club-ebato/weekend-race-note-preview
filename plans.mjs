@@ -14,6 +14,9 @@ export const tiers = [
     schedule: '週末と、南関東の開催日', status: '準備中'},
 ];
 
+// 上位の情報料の表示（設定案）。記事の画面でも同じ文言を使う。
+export const premiumPrice = tiers.find(t => t.key === 'premium').price;
+
 const draft = '<div class="lg-draft" role="note"><b>準備中の案です</b><p>値段は確定していません。決済は未接続で、有料の商品はまだ購入できません。課金は発生しません。</p></div>';
 
 // c：app.js の部品（routeBack, innerHero, bar, btn）

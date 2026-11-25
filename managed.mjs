@@ -1,5 +1,6 @@
 // 記事管理から公開した記事の表示。公開ページと管理画面のプレビューで同じ描画を使う。
 // 本文は、サーバーが「読める」と判定して返したときだけ手元にある。画面側で隠しているわけではない。
+import {premiumPrice} from './plans.mjs';
 import * as backend from './backend.mjs';
 import {horseBadge, horseProse, frameLegend, frameFor, frameColours} from './frames.mjs';
 import {hologramMedia} from './hologram-media.mjs';
@@ -39,8 +40,11 @@ const heading = (n, t) => `<h2 class="oj-heading"><span>${n}</span>${t}</h2>`;
 
 // 記事ごとの見出し画像。会場・レース番号・コース・日付・タイプ・区分から自動で組み立てる（設定や画像の用意は不要）。
 // 背景は予想タイプと選択中のデザインに合わせた写真（member.css の --mg-photo）。文字は画像に焼き込まず、記事の内容と必ず一致させる。
+// 有料記事のうち「上位」の区分かどうか。区分が無い記事は通常として扱う。
+export const isPremium = p => p?.access === 'paid' && p?.tier === 'premium';
+
 export function eyecatch(p, className = 'baked-banner') {
-  const t = typeOf(p), kind = p?.access === 'paid' ? '詳細分析' : '無料予想', day = p?.race_date ? dateLabel(p.race_date) : '';
+  const t = typeOf(p), kind = p?.access === 'paid' ? (isPremium(p) ? '上位版' : '詳細分析') : '無料予想', day = p?.race_date ? dateLabel(p.race_date) : '';
   const label = `${day ? day + '・' : ''}${raceLabel(p)}・${courseLabel(p)}・${t.name}・${kind}`;
   const venue = String(p?.venue || '会場');
   const art = `<span class="mg-eyecatch${venue.length > 3 ? ' mg-eye-long' : ''}" role="img" aria-label="${esc(label)}"><span class="mg-eye-kind">${day ? `<i>${day}</i>` : ''}${kind}</span><span class="mg-eye-race"><b>${esc(venue)}</b><em>${p?.race_number ? esc(p.race_number) + 'R' : '—'}</em></span><span class="mg-eye-course">${esc(courseLabel(p))}</span><span class="mg-eye-type">${t.name}</span></span>`;
@@ -50,12 +54,12 @@ export function eyecatch(p, className = 'baked-banner') {
 export function articleCard(item) {
   const p = item.public, t = typeOf(p), paid = p.access === 'paid';
   const result = ({hit: '的中', miss: '不的中', pending: '結果確認中', cancel: '未提供'})[item.result] || '';
-  return `<button class="catalog-card type-race-card ${paid ? 'catalog-paid' : 'catalog-free'}" data-persona="${t.persona}" data-go="article/${esc(item.id)}"><span class="catalog-status"><span class="badge ${paid ? (item.readable ? 'owned' : '') : 'free'}">${paid ? (item.readable ? '閲覧できます' : '有料・単発') : '無料情報'}</span><span>${dateLabel(p.race_date)} ${result || '公開中'}</span></span>${eyecatch(p, 'baked-race-art')}<span class="cast-strip" data-persona="${t.persona}"><span class="type-mark" data-persona="${t.persona}" aria-hidden="true">${t.mark}</span><span><small>予想タイプ</small><b>${t.name}</b></span><em>提携予想家</em></span><span class="catalog-race-copy"><strong>${esc(raceLabel(p))}</strong><span class="race-course-line">${esc(courseLabel(p))}</span><span>${esc(p.title)}</span></span><span class="catalog-data"><span>発走 <b>${esc(p.post_time || '—')}</b></span><span>${esc(p.ticket_type || '券種')} <b>${p.points || 0}点</b></span><span>情報料 <b>${paid ? '有料' : '0円'}</b></span></span><span class="catalog-action">${paid && !item.readable ? '内容を確認する' : '予想を読む'} →</span></button>`;
+  return `<button class="catalog-card type-race-card ${paid ? 'catalog-paid' : 'catalog-free'}" data-persona="${t.persona}" data-go="article/${esc(item.id)}"><span class="catalog-status"><span class="badge ${paid ? (item.readable ? 'owned' : '') : 'free'}">${paid ? (item.readable ? '閲覧できます' : isPremium(p) ? '有料・上位版' : '有料・単発') : '無料情報'}</span><span>${dateLabel(p.race_date)} ${result || '公開中'}</span></span>${eyecatch(p, 'baked-race-art')}<span class="cast-strip" data-persona="${t.persona}"><span class="type-mark" data-persona="${t.persona}" aria-hidden="true">${t.mark}</span><span><small>予想タイプ</small><b>${t.name}</b></span><em>提携予想家</em></span><span class="catalog-race-copy"><strong>${esc(raceLabel(p))}</strong><span class="race-course-line">${esc(courseLabel(p))}</span><span>${esc(p.title)}</span></span><span class="catalog-data"><span>発走 <b>${esc(p.post_time || '—')}</b></span><span>${esc(p.ticket_type || '券種')} <b>${p.points || 0}点</b></span><span>情報料 <b>${paid ? '有料' : '0円'}</b></span></span><span class="catalog-action">${paid && !item.readable ? '内容を確認する' : '予想を読む'} →</span></button>`;
 }
 
 function ticket(p, body, race, price) {
   const bets = Array.isArray(body?.bets) ? body.bets : [];
-  return `<section class="betting-section"><div class="ticket"><div class="ticket-top"><b>買い目のご案内</b><span>買い目・予算</span></div><div><span>券種</span><b>${esc(p.ticket_type)}・${p.points}点</b></div><div class="picks"><span>組み合わせ</span><b class="bet-pairs">${bets.map(bet => `<span class="bet-pair">${bet.map(n => horseBadge(race, n)).join('<span aria-hidden="true">－</span>')}</span>`).join('')}</b></div><div><span>点数 × 1点の金額</span><b>${p.points}点 × ${yen(p.unit_amount)}</b></div><div class="total"><span>馬券代の目安</span><strong>${Number(p.budget_jpy || 0).toLocaleString('ja-JP')}<small>円</small></strong></div><div><span>情報料</span><b>${p.access === 'paid' ? `単品 ${yen(price?.amount_jpy)}（${esc(price?.note || '設定案')}）` : '0円'}</b></div></div><p class="small">金額は利用例です。馬券代は情報料と別です。</p>${frameLegend(race)}</section>`;
+  return `<section class="betting-section"><div class="ticket"><div class="ticket-top"><b>買い目のご案内</b><span>買い目・予算</span></div><div><span>券種</span><b>${esc(p.ticket_type)}・${p.points}点</b></div><div class="picks"><span>組み合わせ</span><b class="bet-pairs">${bets.map(bet => `<span class="bet-pair">${bet.map(n => horseBadge(race, n)).join('<span aria-hidden="true">－</span>')}</span>`).join('')}</b></div><div><span>点数 × 1点の金額</span><b>${p.points}点 × ${yen(p.unit_amount)}</b></div><div class="total"><span>馬券代の目安</span><strong>${Number(p.budget_jpy || 0).toLocaleString('ja-JP')}<small>円</small></strong></div><div><span>情報料</span><b>${p.access === 'paid' ? (isPremium(p) ? `上位版 ${premiumPrice}（設定案）` : `単品 ${yen(price?.amount_jpy)}（${esc(price?.note || '設定案')}）`) : '0円'}</b></div></div><p class="small">金額は利用例です。馬券代は情報料と別です。</p>${frameLegend(race)}</section>`;
 }
 
 function historyBlock(a) {
@@ -89,7 +93,7 @@ function bodyHtml(a, race) {
 
 function lockedHtml(a, c) {
   const p = a.public, next = `article/${a.id}`;
-  return `<div class="oj-price"><div><span>この1レースの情報料</span><strong>${Number(a.price?.amount_jpy || 0).toLocaleString('ja-JP')}<small>円</small></strong><small>税込・${esc(a.price?.note || '設定案')}</small></div><ul><li>単発購入</li><li>自動更新なし</li><li>馬券代は別</li></ul></div>
+  return `<div class="oj-price"><div><span>${isPremium(p) ? '上位版・この1レースの情報料' : 'この1レースの情報料'}</span>${isPremium(p) ? `<strong class="mg-premium-price">${premiumPrice}</strong><small>税込・設定案（値段は未確定）</small>` : `<strong>${Number(a.price?.amount_jpy || 0).toLocaleString('ja-JP')}<small>円</small></strong><small>税込・${esc(a.price?.note || '設定案')}</small>`}</div><ul><li>単発購入</li><li>自動更新なし</li><li>馬券代は別</li></ul></div>
     ${heading('01', '購入前に確認できること。')}
     <dl class="oj-terms"><div><dt>対象レース</dt><dd>${esc(raceLabel(p))}<small>${dateLabel(p.race_date)}</small></dd></div><div><dt>コース</dt><dd>${esc(courseLabel(p))}</dd></div><div><dt>発走</dt><dd>${esc(p.post_time)}</dd></div><div><dt>券種・点数</dt><dd>${esc(p.ticket_type)}・${p.points}点</dd></div><div><dt>馬券代の目安</dt><dd>${yen(p.budget_jpy)}<small>${p.points}点 × ${yen(p.unit_amount)}</small></dd></div><div><dt>販売締切</dt><dd>${timeLabel(p.sales_close_at) || '—'}</dd></div></dl>
     ${p.viewpoints ? `<div class="copy-box"><b>選定の着眼点</b><p>${esc(p.viewpoints).replace(/\n+/g, '<br>')}</p></div>` : ''}
@@ -103,11 +107,11 @@ function lockedHtml(a, c) {
 // a = {id, public, body|null, locked, signed_in, revision_no, revisions, result, price, sales_open}
 export function renderArticle(a, c) {
   const p = a.public || {}, t = typeOf(p), paid = p.access === 'paid', race = raceOf(a.body);
-  const state = paid ? (a.locked ? '有料・詳細分析' : '閲覧できます') : '無料予想';
+  const state = paid ? (a.locked ? (isPremium(p) ? '有料・上位版' : '有料・詳細分析') : '閲覧できます') : '無料予想';
   return `<article class="oj-page oj-article analysis-article mg-article" data-persona="${t.persona}" data-mg-article="${esc(a.id || '')}"><div class="oj-body">
     <div class="oj-section-label"><span>${state}</span><b>${marketLabel(p)}・${t.name}</b></div>
     ${eyecatch(p)}
-    <header class="oj-article-title"><p>${dateLabel(p.race_date)} · ${esc(raceLabel(p))} · ${esc(courseLabel(p))}${p.race_name ? ' · ' + esc(p.race_name) : ''}</p><h1>${esc(p.title) || 'タイトル未入力'}</h1><div><span>${esc(p.ticket_type || '券種')}${p.points || 0}点</span><span>${paid ? '有料分析' : '情報料0円'}</span><span>発走 ${esc(p.post_time || '—')}</span></div></header>
+    <header class="oj-article-title"><p>${dateLabel(p.race_date)} · ${esc(raceLabel(p))} · ${esc(courseLabel(p))}${p.race_name ? ' · ' + esc(p.race_name) : ''}</p><h1>${esc(p.title) || 'タイトル未入力'}</h1><div><span>${esc(p.ticket_type || '券種')}${p.points || 0}点</span><span>${paid ? (isPremium(p) ? '上位版' : '有料分析') : '情報料0円'}</span><span>発走 ${esc(p.post_time || '—')}</span></div></header>
     <div class="cast-strip" data-persona="${t.persona}"><span class="type-mark" data-persona="${t.persona}" aria-hidden="true">${t.mark}</span><span><small>予想タイプ</small><b>${t.name}</b></span><em>予想提供：提携予想家</em></div>
     <p class="analysis-lead">${esc(p.summary).replace(/\n+/g, '<br>')}</p>
     ${a.locked || !a.body ? lockedHtml(a, c) : bodyHtml(a, race)}
